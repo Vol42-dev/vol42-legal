@@ -4,12 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Vol.42 — Apps & Legal</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <style>
   body { font-family: -apple-system, "Hanken Grotesk", system-ui, sans-serif; max-width: 480px; margin: 80px auto; padding: 0 20px; color: #2B2620; background: #F5F1E8; text-align: center; }
   h1 { font-family: Georgia, "Source Serif 4", serif; font-style: italic; font-size: 30px; margin-bottom: 4px; }
   p.tag { color: #857B6E; margin-top: 0; margin-bottom: 32px; }
   .app-card { display: block; margin-top: 16px; padding: 16px; border: 1px solid rgba(43,38,32,.12); border-radius: 10px; background: #FFFDF7; text-align: left; text-decoration: none; color: inherit; }
-  .app-card h2 { font-size: 17px; margin: 0 0 6px; color: #2B2620; }
+  .app-card .app-header { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+  .app-card h2 { font-size: 17px; margin: 0; color: #2B2620; }
   .app-card .links { font-size: 14px; }
   .app-card .links a { color: #3E6B52; text-decoration: none; margin-right: 14px; }
   .app-card .links a:hover { text-decoration: underline; }
@@ -22,7 +24,14 @@
 <p class="tag">Apps &amp; legal documentation</p>
 
 <div class="app-card">
-  <h2>Ownwise — Home Inventory</h2>
+  <div class="app-header">
+    <svg width="22" height="22" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+      <path d="M50 12 L90 44 V86 A4 4 0 0 1 86 90 H14 A4 4 0 0 1 10 86 V44 Z" stroke="#3E6B52" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/>
+      <circle cx="50" cy="60" r="17" fill="#3E6B52"/>
+      <circle cx="50" cy="60" r="7" fill="#FFFDF7"/>
+    </svg>
+    <h2>Ownwise — Home Inventory</h2>
+  </div>
   <div class="links">
     <a href="ownwise/privacy.html">Privacy Policy</a>
     <a href="ownwise/terms.html">Terms &amp; Conditions</a>
