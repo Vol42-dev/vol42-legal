@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PadSynth — Privacy Policy</title>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<style>
+  body { font-family: -apple-system, "Hanken Grotesk", system-ui, sans-serif; max-width: 720px; margin: 0 auto; padding: 40px 20px 80px; color: #2B2620; background: #F5F1E8; line-height: 1.6; }
+  .brand { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; }
+  h1 { font-family: Georgia, "Source Serif 4", serif; font-style: italic; font-size: 32px; margin: 0; }
+  .updated { color: #857B6E; font-size: 14px; margin-bottom: 32px; }
+  h2 { font-size: 18px; margin-top: 36px; border-bottom: 1px solid rgba(43,38,32,.12); padding-bottom: 6px; }
+  ul { padding-left: 20px; }
+  li { margin-bottom: 8px; }
+  table { border-collapse: collapse; width: 100%; margin: 16px 0; }
+  th, td { text-align: left; padding: 8px 12px; border: 1px solid rgba(43,38,32,.12); font-size: 15px; }
+  th { background: #EDE7DA; }
+  a { color: #A63A2A; }
+  .note { font-size: 13px; color: #857B6E; margin-top: 48px; border-top: 1px solid rgba(43,38,32,.12); padding-top: 16px; }
+  .back { display: inline-block; margin-bottom: 24px; font-size: 14px; color: #857B6E; text-decoration: none; }
+</style>
+</head>
+<body>
+
+<a class="back" href="../index.html">&larr; Vol.42 apps</a>
+<div class="brand">
+  <svg width="30" height="30" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+    <rect x="10" y="10" width="36" height="36" rx="5" fill="#A63A2A"/>
+    <rect x="54" y="10" width="36" height="36" rx="5" fill="#A63A2A"/>
+    <rect x="10" y="54" width="36" height="36" rx="5" fill="#A63A2A"/>
+    <rect x="54" y="54" width="36" height="36" rx="5" fill="#5C6E2E"/>
+  </svg>
+  <h1>PadSynth — Privacy Policy</h1>
+</div>
+<p class="updated">Last updated: August 2, 2026</p>
+
+<p>This policy is short because PadSynth's architecture makes it short: the app has no network access at all. It cannot collect, transmit, or share your data, because it never connects to anything.</p>
+
+<h2>Summary</h2>
+<ul>
+  <li>PadSynth does not require an account, login, or registration.</li>
+  <li>PadSynth does not request the Internet permission. It has no server, and no ability to send data anywhere.</li>
+  <li>Everything you create — presets, pad mappings, key and scale settings, macro assignments — is stored only in the app's private storage on your device.</li>
+  <li>PadSynth contains no analytics, advertising, tracking, crash-reporting or telemetry software of any kind.</li>
+  <li>PadSynth does not request location, contacts, camera, microphone, storage or network permissions.</li>
+  <li>MIDI data from a connected instrument is processed in memory to produce sound and is never recorded, logged or stored.</li>
+  <li>Preset files you export are written only to the location you pick yourself, through Android's own file picker.</li>
+</ul>
+
+<h2>What PadSynth stores, and where</h2>
+<p>Your user presets, pad-learn mapping, Key Lock configuration and app settings are stored locally in the app's private, sandboxed storage. Uninstalling the app without first exporting your presets permanently deletes them; PadSynth has no way to recover them, because no copy exists anywhere else.</p>
+
+<h2>Permissions PadSynth requests, and why</h2>
+<table>
+  <tr><th>Permission</th><th>Why it's needed</th></tr>
+  <tr><td>Foreground service (media playback)</td><td>To keep the synthesizer engine running and audible while the screen is off or another app is in front — without it, Android would suspend audio mid-performance</td></tr>
+  <tr><td>Post notifications</td><td>Solely to display the ongoing "engine running" notification that Android requires for a foreground service</td></tr>
+  <tr><td>MIDI (device feature)</td><td>To receive note, velocity and controller data from a connected USB MIDI instrument, such as an Akai MPC or a USB-MIDI interface</td></tr>
+</table>
+<p>PadSynth requests no Internet permission, no location, no contacts, no camera, no microphone, and no broad storage access. Reading and writing preset files uses Android's Storage Access Framework, which grants access only to the individual file you select.</p>
+
+<h2>Connected MIDI and audio hardware</h2>
+<p>When you connect an instrument over USB, PadSynth reads incoming MIDI messages in order to play notes and audio out to your chosen output device. This data is used in the moment and discarded — no performance, note sequence, or recording is captured or retained by the app.</p>
+
+<h2>In-app purchases</h2>
+<p>PadSynth is free to use for a 14-day trial period, after which a single one-time in-app purchase unlocks continued use. Payment is processed entirely through Google Play Billing. PadSynth never receives, sees, or stores your payment details — those are handled by Google Play under Google's own privacy policy. The app stores only a local flag recording whether the unlock has been purchased.</p>
+
+<h2>Third-party services</h2>
+<p>Apart from Google Play Billing described above, PadSynth does not integrate with, or transmit data to, any third-party service, analytics provider, or advertising network.</p>
+
+<h2>Children's privacy</h2>
+<p>PadSynth is not directed at children and does not knowingly collect data from anyone, of any age — consistent with the no-data-collection architecture described above.</p>
+
+<h2>Changes to this policy</h2>
+<p>If PadSynth ever adds a feature that changes this policy, this page will be updated first, and the change will be disclosed in the app's release notes before it ships. As of this version, no such feature exists.</p>
+
+<h2>Contact</h2>
+<p><a href="mailto:support@vol42.dev">support@vol42.dev</a> — for privacy questions or requests.</p>
+
+<p class="note">Developed by Vol.42 · See also: <a href="terms.html">Terms &amp; Conditions</a></p>
+
+</body>
+</html>
