@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DualDash — Privacy Policy</title>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<style>
+  body { font-family: -apple-system, "Hanken Grotesk", system-ui, sans-serif; max-width: 720px; margin: 0 auto; padding: 40px 20px 80px; color: #2B2620; background: #F5F1E8; line-height: 1.6; }
+  .brand { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; }
+  h1 { font-family: Georgia, "Source Serif 4", serif; font-style: italic; font-size: 32px; margin: 0; }
+  .updated { color: #857B6E; font-size: 14px; margin-bottom: 32px; }
+  h2 { font-size: 18px; margin-top: 36px; border-bottom: 1px solid rgba(43,38,32,.12); padding-bottom: 6px; }
+  ul { padding-left: 20px; }
+  li { margin-bottom: 8px; }
+  table { border-collapse: collapse; width: 100%; margin: 16px 0; }
+  th, td { text-align: left; padding: 8px 12px; border: 1px solid rgba(43,38,32,.12); font-size: 15px; }
+  th { background: #EDE7DA; }
+  code { background: #EDE7DA; padding: 1px 5px; border-radius: 3px; font-size: 13px; }
+  a { color: #2F5D8C; }
+  .note { font-size: 13px; color: #857B6E; margin-top: 48px; border-top: 1px solid rgba(43,38,32,.12); padding-top: 16px; }
+  .back { display: inline-block; margin-bottom: 24px; font-size: 14px; color: #857B6E; text-decoration: none; }
+</style>
+</head>
+<body>
+
+<a class="back" href="../index.html">&larr; Vol.42 apps</a>
+<div class="brand">
+  <svg width="30" height="30" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+    <circle cx="50" cy="50" r="38" stroke="#2F5D8C" stroke-width="7"/>
+    <path d="M50 26 V50 L67 61" stroke="#2F5D8C" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  <h1>DualDash — Privacy Policy</h1>
+</div>
+<p class="updated">Last updated: August 30, 2026</p>
+
+<p>This policy is short because DualDash's design makes it short: the app has no server, makes no network connections, and collects nothing.</p>
+
+<h2>Summary</h2>
+<ul>
+  <li>DualDash does not require an account or login.</li>
+  <li>DualDash does not collect, transmit, or store any of your data on any server, because DualDash has no server.</li>
+  <li>DualDash makes no network connections of any kind — not for updates, not for telemetry, not for anything.</li>
+  <li>There is no analytics, advertising, or tracking software in the app.</li>
+  <li>DualDash requests <strong>no Windows permissions at all</strong> — no location, camera, microphone, contacts, calendar, or access to your files.</li>
+</ul>
+
+<h2>What DualDash reads</h2>
+<p>To show you what your computer is doing, DualDash reads the following from your own machine, in memory, and displays it to you on screen:</p>
+<ul>
+  <li>Processor, memory, GPU, disk and network performance counters provided by Windows</li>
+  <li>The names and CPU and memory usage of running processes, for the optional per-process list</li>
+  <li>Temperature sensors, where your hardware exposes them (ACPI thermal zones, NVIDIA driver telemetry, or LibreHardwareMonitor / OpenHardwareMonitor if you have either installed)</li>
+  <li>Your Windows time zone data and your light/dark theme preference</li>
+</ul>
+<p>None of this is recorded, uploaded, or kept beyond the moment it is shown. The short history graphs live in memory only and are gone when you close the app.</p>
+
+<h2>What DualDash deliberately does not read</h2>
+<p>DualDash asks Windows for no permissions, and declares no device capabilities in its package.</p>
+<p>In particular, it does not read Wi-Fi network details. Windows treats the name (SSID) and hardware address (BSSID) of the network you are joined to as location data, because those can be used to work out where a device is. An earlier version of DualDash read them only to show a signal-strength percentage; that reading was <strong>removed in version 1.1.0</strong> so the app touches no location-related data whatsoever. Network link speed now comes from the network adapter's own reported rate, which says nothing about where you are.</p>
+
+<h2>What DualDash stores, and where</h2>
+<p>A single settings file on your own device:</p>
+<table>
+  <tr><th>Installed from</th><th>Location</th></tr>
+  <tr><td>Microsoft Store</td><td><code>%LOCALAPPDATA%\Packages\Vol42.dev.DualDash_0ghj7dvz72xhr\LocalCache\Local\Vol42\DualDash\</code></td></tr>
+  <tr><td>Run directly</td><td><code>%LOCALAPPDATA%\Vol42\DualDash\</code></td></tr>
+</table>
+<p>It holds your chosen time zones and labels, alarms, window position and size, theme, opacity and monitor preferences. If an unexpected error occurs, a diagnostic message may be written to <code>error.log</code> in the same folder; that file is capped in size and never leaves your device. Uninstalling the Store version removes the folder and everything in it.</p>
+
+<h2>Why DualDash needs "full trust"</h2>
+<p>The Microsoft Store lists DualDash as using the <code>runFullTrust</code> capability. This is what any traditional Windows desktop program needs in order to read performance counters, memory status, network interface statistics and per-process usage — the very numbers the app exists to display. It is not a permission to access your personal files, and DualDash does not do so.</p>
+
+<h2>Third-party services</h2>
+<p>DualDash does not integrate with, or send data to, any third-party service, analytics provider, or advertising network. There are no in-app purchases.</p>
+
+<h2>Children's privacy</h2>
+<p>DualDash is suitable for all ages and knowingly collects nothing from anyone, of any age — consistent with the no-data-collection design described above.</p>
+
+<h2>Changes to this policy</h2>
+<p>If DualDash ever gains a feature that changes this policy, this page will be updated first and the change disclosed in the app's release notes before it ships. As of this version, no such feature exists or is planned.</p>
+
+<h2>Contact</h2>
+<p><a href="mailto:support@vol42.dev">support@vol42.dev</a> — for privacy questions or requests.</p>
+
+<p class="note">Developed by Vol.42 · See also: <a href="terms.html">Terms &amp; Conditions</a></p>
+
+</body>
+</html>
