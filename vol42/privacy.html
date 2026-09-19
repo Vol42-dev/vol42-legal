@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vol.42 — Privacy Policy</title>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<style>
+  body { font-family: -apple-system, "Hanken Grotesk", system-ui, sans-serif; max-width: 720px; margin: 0 auto; padding: 40px 20px 80px; color: #2B2620; background: #F5F1E8; line-height: 1.6; }
+  .brand { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; }
+  h1 { font-family: Georgia, "Source Serif 4", serif; font-style: italic; font-size: 32px; margin: 0; }
+  .updated { color: #857B6E; font-size: 14px; margin-bottom: 32px; }
+  h2 { font-size: 18px; margin-top: 36px; border-bottom: 1px solid rgba(43,38,32,.12); padding-bottom: 6px; }
+  ul { padding-left: 20px; }
+  li { margin-bottom: 8px; }
+  table { border-collapse: collapse; width: 100%; margin: 16px 0; }
+  th, td { text-align: left; padding: 8px 12px; border: 1px solid rgba(43,38,32,.12); font-size: 15px; vertical-align: top; }
+  th { background: #EDE7DA; }
+  code { background: #EDE7DA; padding: 1px 5px; border-radius: 3px; font-size: 13px; }
+  a { color: #2F5D8C; }
+  .note { font-size: 13px; color: #857B6E; margin-top: 48px; border-top: 1px solid rgba(43,38,32,.12); padding-top: 16px; }
+  .back { display: inline-block; margin-bottom: 24px; font-size: 14px; color: #857B6E; text-decoration: none; }
+</style>
+</head>
+<body>
+
+<a class="back" href="../index.html">&larr; Vol.42 apps</a>
+<div class="brand">
+  <svg width="30" height="30" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+    <circle cx="50" cy="50" r="42" fill="#1C1C22"/>
+    <circle cx="50" cy="50" r="34" stroke="#3A3A44" stroke-width="2"/>
+    <circle cx="50" cy="50" r="26" stroke="#3A3A44" stroke-width="2"/>
+    <circle cx="50" cy="50" r="15" fill="#E8B23A"/>
+    <circle cx="50" cy="50" r="3" fill="#0B0B0D"/>
+  </svg>
+  <h1>Vol.42 — Privacy Policy</h1>
+</div>
+<p class="updated">Last updated: September 19, 2026</p>
+
+<p>This policy is short because Vol.42's design makes it short: the app has no server, makes no network connections, and collects nothing. What it does do is run instrument plugins you have installed, and write files where you tell it to — both are described below.</p>
+
+<h2>Summary</h2>
+<ul>
+  <li>Vol.42 does not require an account or login.</li>
+  <li>Vol.42 does not collect, transmit, or store any of your data on any server, because Vol.42 has no server.</li>
+  <li>Vol.42 makes no network connections of any kind — not for updates, not for telemetry, not for licensing, not for anything.</li>
+  <li>There is no analytics, advertising, tracking or crash-reporting software in the app.</li>
+  <li>Vol.42 requests <strong>no Windows permissions</strong> — no location, camera, microphone, contacts or calendar. It declares only <code>runFullTrust</code>, explained below.</li>
+  <li>MIDI from your pad controller is processed in memory to play notes and is never recorded or stored.</li>
+</ul>
+
+<h2>What Vol.42 reads on your computer</h2>
+<ul>
+  <li><strong>Your VST3 plugin folders</strong> — the standard locations (<code>C:\Program Files\Common Files\VST3</code> and the per-user equivalent) plus any folder you add yourself. Vol.42 opens each plugin once, in a separate process, to check that it loads, and remembers the name, maker and category of the ones that work.</li>
+  <li><strong>Audio and MIDI devices</strong> — their names, as Windows reports them, so you can choose an output and a controller.</li>
+  <li><strong>Removable drives</strong> — when you export a kit, Vol.42 checks whether any drive has an <code>MPC-Sample</code> folder at its root, so it can offer the sampler's card as the destination. It reads nothing else from the drive.</li>
+</ul>
+<p>None of this leaves your machine.</p>
+
+<h2>Third-party plugins run their own code</h2>
+<p>Vol.42 is a host: the instruments you play are VST3 plugins made by other companies, installed on your computer by you. When a plugin is loaded, its own code runs inside Vol.42. <strong>Some plugins connect to the internet on their own</strong> — typically to check a licence or activation with their maker — and some keep their own settings and logs. That behaviour belongs to the plugin and its maker, is governed by their privacy policy, and is outside Vol.42's control. Vol.42 itself sends nothing, and adds nothing to what a plugin does.</p>
+
+<h2>What Vol.42 stores, and where</h2>
+<p>Everything Vol.42 keeps is on your own device:</p>
+<table>
+  <tr><th>What</th><th>Where</th></tr>
+  <tr><td>Settings, the plugin list from your last scan, a report of plugins that would not load, and your last session</td><td><code>%APPDATA%\Vol.42\</code></td></tr>
+  <tr><td>Kits you save — including the plugin's own saved patch, as the plugin provides it</td><td><code>%APPDATA%\Vol.42\kits\</code></td></tr>
+  <tr><td>A short log of each kit export (kit name, destination folder, progress) to help diagnose a failed export</td><td><code>%TEMP%\vol42-export.log</code></td></tr>
+</table>
+<p>When installed from the Microsoft Store, Windows may keep these under the package's private folder in <code>%LOCALAPPDATA%\Packages\</code> instead. Uninstalling the Store version removes them.</p>
+<p>A saved kit contains whatever state the plugin chooses to save about itself. For most instruments that is the patch; Vol.42 does not inspect it, only stores it so the kit reloads as you left it.</p>
+
+<h2>Files Vol.42 writes for you</h2>
+<p><strong>Export MPC Sample Kit</strong> renders sound through the loaded plugin and writes audio files and a project file to a folder you choose — by default the sampler's microSD card if one is connected, otherwise your Documents folder. These are your files: Vol.42 writes them where you point it and does not read them back, copy them elsewhere, or send them anywhere.</p>
+
+<h2>Why Vol.42 needs "full trust"</h2>
+<p>The Microsoft Store lists Vol.42 as using the <code>runFullTrust</code> capability. This is what a desktop program needs in order to load plugin DLLs from outside its own package, open an audio device in exclusive mode for low latency, and receive MIDI. It is not a permission to access your personal files, and Vol.42 does not do so beyond the folders described above.</p>
+
+<h2>Third-party services</h2>
+<p>Vol.42 does not integrate with, or send data to, any third-party service, analytics provider, or advertising network. There are no in-app purchases.</p>
+
+<h2>Children's privacy</h2>
+<p>Vol.42 is suitable for all ages and knowingly collects nothing from anyone, of any age — consistent with the no-data-collection design described above.</p>
+
+<h2>Changes to this policy</h2>
+<p>If Vol.42 ever gains a feature that changes this policy, this page will be updated first and the change disclosed in the app's release notes before it ships. As of this version, no such feature exists or is planned.</p>
+
+<h2>Contact</h2>
+<p><a href="mailto:support@vol42.dev">support@vol42.dev</a> — for privacy questions or requests.</p>
+
+<p class="note">Developed by Vol.42 · See also: <a href="terms.html">Terms &amp; Conditions</a></p>
+
+</body>
+</html>
