@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tablune — Privacy Policy</title>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<style>
+  body { font-family: -apple-system, "Hanken Grotesk", system-ui, sans-serif; max-width: 720px; margin: 0 auto; padding: 40px 20px 80px; color: #2B2620; background: #F5F1E8; line-height: 1.6; }
+  .brand { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; }
+  h1 { font-family: Georgia, "Source Serif 4", serif; font-style: italic; font-size: 32px; margin: 0; }
+  .updated { color: #857B6E; font-size: 14px; margin-bottom: 32px; }
+  h2 { font-size: 18px; margin-top: 36px; border-bottom: 1px solid rgba(43,38,32,.12); padding-bottom: 6px; }
+  ul { padding-left: 20px; }
+  li { margin-bottom: 8px; }
+  table { border-collapse: collapse; width: 100%; margin: 16px 0; }
+  th, td { text-align: left; padding: 8px 12px; border: 1px solid rgba(43,38,32,.12); font-size: 15px; }
+  th { background: #EDE7DA; }
+  code { font-size: 13px; word-break: break-all; }
+  a { color: #3E6B52; }
+  .note { font-size: 13px; color: #857B6E; margin-top: 48px; border-top: 1px solid rgba(43,38,32,.12); padding-top: 16px; }
+  .back { display: inline-block; margin-bottom: 24px; font-size: 14px; color: #857B6E; text-decoration: none; }
+</style>
+</head>
+<body>
+
+<a class="back" href="../index.html">&larr; Vol.42 apps</a>
+<div class="brand">
+  <svg width="30" height="30" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+    <mask id="tabluneBite">
+      <rect width="100" height="100" rx="22" fill="#fff"/>
+      <circle cx="100" cy="0" r="29" fill="#000"/>
+    </mask>
+    <rect width="100" height="100" rx="22" fill="#4F46C8" mask="url(#tabluneBite)"/>
+    <rect x="25" y="40" width="38" height="10.7" rx="5.35" fill="#FFFDF7"/>
+    <rect x="25" y="58" width="50" height="10.7" rx="5.35" fill="#FFFDF7"/>
+  </svg>
+  <h1>Tablune — Privacy Policy</h1>
+</div>
+<p class="updated">Last updated: October 4, 2026</p>
+
+<p>This policy is short because Tablune's design makes it short: the app has no server, makes no network connections, and collects nothing. Your files, their contents, their names, and even the fact that you opened them never reach the developer.</p>
+
+<h2>Summary</h2>
+<ul>
+  <li>Tablune does not require an account or login.</li>
+  <li>Tablune does not collect, transmit, or store any of your data on any server, because Tablune has no server.</li>
+  <li>Tablune makes no network connections of any kind — not for updates, not for telemetry, not for anything. It contains no HTTP client, no sockets and no networking libraries.</li>
+  <li>There is no analytics, advertising, tracking, or crash reporting in the app.</li>
+  <li>Tablune opens only the files you choose. It never scans your disk, your other documents, or anything you did not point it at.</li>
+  <li><strong>Your original file is never modified.</strong> Tablune works on a private copy and writes results only where you ask it to.</li>
+</ul>
+
+<h2>What Tablune reads</h2>
+<p>The files you open, and nothing else — the delimited text files (CSV, TSV) you choose from the file picker, drag onto the window, or open from Explorer, plus any Tablune project or recipe you open yourself.</p>
+<p>When you open a file, Tablune copies it into a private working area and does all processing on that copy. The original is read once and never written to.</p>
+
+<h2>What Tablune stores, and where</h2>
+<p>Everything Tablune writes by itself lives in your own user profile:</p>
+<table>
+  <tr><th>Installed from</th><th>Location</th></tr>
+  <tr><td>Microsoft Store</td><td><code>%LOCALAPPDATA%\Packages\Vol42.dev.Tablune_0ghj7dvz72xhr\LocalCache\Local\Tablune\</code></td></tr>
+  <tr><td>Run directly</td><td><code>%LOCALAPPDATA%\Tablune\</code></td></tr>
+  <tr><td>Saved recipes (both cases)</td><td><code>Documents\Tablune\Recipes\</code></td></tr>
+</table>
+<p>Recipes are kept under Documents on purpose: a packaged app's local data is removed when you uninstall, and work you saved deliberately should outlive the app. Everything else in the table above is Tablune's own working data, and uninstalling removes it.</p>
+<ul>
+  <li><strong>Working copies.</strong> The private copy of each file you open. Removed when you close the file. You can move the working area to another local folder in Settings.</li>
+  <li><strong>Recovery snapshots.</strong> Your steps, checks and corrections, saved a few seconds after each change so an unexpected shutdown does not lose your work. An interrupted session is kept for seven days unless you restore or discard it.</li>
+  <li><strong>Projects and recipes.</strong> Files you choose to save. A project can contain cell values you corrected by hand, so treat a project file like the data it describes when you share it. A recipe contains settings only — no data, no file paths, and nothing executable.</li>
+  <li><strong>Exports and reports.</strong> Files you ask for, written where you choose. A run summary records counts, settings and file hashes; optional reports (issues, removed rows, quarantined records) contain values from your file, and Tablune tells you so before writing them.</li>
+  <li><strong>Settings and history.</strong> Your preferences and a short list of recently opened files, which you can clear at any time in Settings.</li>
+  <li><strong>Diagnostic logs.</strong> Five small rotating files recording operation names, timings, version numbers and error codes. They deliberately exclude cell values, file names and paths. Nothing is transmitted; if you ever want to send them, Settings can write a ZIP and shows you exactly what it contains first.</li>
+</ul>
+<p>Tablune does not claim to encrypt this storage or to erase it securely. If your Documents folder is synced by OneDrive or similar, that folder follows your own sync settings — Tablune itself uploads nothing.</p>
+
+<h2>Why Tablune needs "full trust"</h2>
+<p>The Microsoft Store lists Tablune as using the <code>runFullTrust</code> capability. This is what any traditional Windows desktop program needs in order to run at all — in Tablune's case, to open the files you pick through the standard Windows file dialogs and to run its own background worker process, which does the heavy processing over a local pipe so the window stays responsive. It is not a permission to roam your personal files, and Tablune does not do so. No other capability is declared.</p>
+
+<h2>Network use</h2>
+<p>Tablune makes no network connections of its own, and every data feature works with networking switched off.</p>
+<p>The one online element is the Microsoft Store. Windows — not Tablune — checks your licence and handles the trial and the purchase. If you press "Buy once" or "Open Microsoft Store", Windows opens the Store app. Microsoft's handling of that is covered by the <a href="https://privacy.microsoft.com/privacystatement">Microsoft Privacy Statement</a>. Tablune receives only whether you hold a valid licence and, during a trial, when it ends. Nothing about your files is involved.</p>
+
+<h2>Third-party services</h2>
+<p>Tablune does not integrate with, or send data to, any third-party service, analytics provider, or advertising network.</p>
+
+<h2>Children's privacy</h2>
+<p>Tablune is a tool for working with data files. It is not directed at children and knowingly collects nothing from anyone, of any age — consistent with the no-data-collection design described above.</p>
+
+<h2>Your choices</h2>
+<ul>
+  <li>Clear the recent-files list, or clear unused working files, in Settings.</li>
+  <li>Delete recovery snapshots by discarding them when the app offers them, or by clearing unused cache.</li>
+  <li>Uninstall at any time. Uninstalling removes the app and its working files; it leaves your own sources, exports, projects and saved recipes exactly where they are.</li>
+</ul>
+
+<h2>Changes to this policy</h2>
+<p>If Tablune ever gains a feature that changes what is stored, or adds any network feature, this page will be updated first and the change disclosed in the app's release notes before it ships. As of this version, no such feature exists or is planned.</p>
+
+<h2>Contact</h2>
+<p><a href="mailto:support@vol42.dev">support@vol42.dev</a> — for privacy questions or requests.</p>
+
+<p class="note">Developed by Vol.42 · See also: <a href="terms.html">Terms &amp; Conditions</a></p>
+
+</body>
+</html>
