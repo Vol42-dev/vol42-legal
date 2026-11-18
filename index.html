@@ -3,75 +3,277 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Vol.42 — Apps & Legal</title>
+<title>Vol.42 — Small apps that do one job properly</title>
+<meta name="description" content="Vol.42 makes focused apps for Android and Windows: Ownitory home inventory, DualDash world clock and system monitor, and INKEY RACK for MPC Sample kits. No accounts, no tracking.">
+<meta property="og:title" content="Vol.42 — Small apps that do one job properly">
+<meta property="og:description" content="Ownitory, DualDash and INKEY RACK. No accounts, no tracking, your data stays on your device.">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <style>
-  body { font-family: -apple-system, "Hanken Grotesk", system-ui, sans-serif; max-width: 480px; margin: 80px auto; padding: 0 20px; color: #2B2620; background: #F5F1E8; text-align: center; }
-  h1 { font-family: Georgia, "Source Serif 4", serif; font-style: italic; font-size: 30px; margin-bottom: 4px; }
-  p.tag { color: #857B6E; margin-top: 0; margin-bottom: 32px; }
-  .app-card { display: block; margin-top: 16px; padding: 16px; border: 1px solid rgba(43,38,32,.12); border-radius: 10px; background: #FFFDF7; text-align: left; text-decoration: none; color: inherit; }
-  .app-card .app-header { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
-  .app-card h2 { font-size: 17px; margin: 0; color: #2B2620; }
-  .app-card .links { font-size: 14px; }
-  .app-card .links a { color: #3E6B52; text-decoration: none; margin-right: 14px; }
-  .app-card .links a:hover { text-decoration: underline; }
-  footer { margin-top: 48px; font-size: 13px; color: #857B6E; }
+  @font-face { font-family: "Fraunces"; src: url(assets/fonts/fraunces_semibold_italic.ttf) format("truetype"); font-style: italic; font-weight: 600; font-display: swap; }
+  @font-face { font-family: "Manrope"; src: url(assets/fonts/manrope_regular.ttf) format("truetype"); font-weight: 400; font-display: swap; }
+  @font-face { font-family: "Manrope"; src: url(assets/fonts/manrope_semibold.ttf) format("truetype"); font-weight: 600; font-display: swap; }
+  @font-face { font-family: "Manrope"; src: url(assets/fonts/manrope_bold.ttf) format("truetype"); font-weight: 700; font-display: swap; }
+
+  :root {
+    --paper: #F5F1E8; --card: #FFFDF7; --ink: #2B2620; --muted: #6E655A; --line: rgba(43,38,32,.12);
+    --green: #3E6B52;
+    --dd-bg: #11151C; --dd-ink: #E6EAF0; --dd-muted: #8C96A5; --dd-acc: #4FC3F7;
+    --ik-bg: #121214; --ik-ink: #F1EBDD; --ik-muted: #A39D90; --ik-acc: #E8B23A;
+    --serif: "Fraunces", Georgia, serif; --sans: "Manrope", -apple-system, system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; font-family: var(--sans); color: var(--ink); background: var(--paper); line-height: 1.55; -webkit-font-smoothing: antialiased; }
+  img { display: block; max-width: 100%; height: auto; }
+  a { color: inherit; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+
+  /* header */
+  header { position: sticky; top: 0; z-index: 10; background: rgba(245,241,232,.9); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+  header .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-family: var(--serif); font-style: italic; font-weight: 600; font-size: 22px; }
+  nav a { text-decoration: none; font-weight: 600; font-size: 14px; color: var(--muted); margin-left: 22px; }
+  nav a:hover { color: var(--ink); }
+
+  /* hero */
+  .hero { padding: 72px 0 56px; }
+  .eyebrow { font-weight: 700; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--green); margin: 0 0 14px; }
+  .hero h1 { font-family: var(--serif); font-style: italic; font-weight: 600; font-size: clamp(40px, 6.4vw, 76px); line-height: 1.02; letter-spacing: -.01em; margin: 0; max-width: 14ch; }
+  .hero h1 em { color: var(--green); }
+  .hero p.lead { font-size: clamp(17px, 2vw, 20px); color: var(--muted); max-width: 44ch; margin: 22px 0 32px; }
+  .tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .tile { display: flex; gap: 14px; align-items: center; padding: 16px; border-radius: 18px; background: var(--card); border: 1px solid var(--line); text-decoration: none; transition: transform .15s, box-shadow .15s; }
+  .tile:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(43,38,32,.08); }
+  .tile svg { flex: none; }
+  .tile b { display: block; font-size: 16px; }
+  .tile span { font-size: 13px; color: var(--muted); }
+
+  /* principles */
+  .principles { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin: 8px 0 72px; }
+  .principles div { padding: 22px 22px 22px 0; }
+  .principles div + div { padding-left: 22px; border-left: 1px solid var(--line); }
+  .principles h3 { font-size: 15px; margin: 0 0 4px; }
+  .principles p { margin: 0; font-size: 14px; color: var(--muted); }
+
+  /* app showcases */
+  .app { border-radius: 28px; overflow: hidden; margin-bottom: 28px; display: grid; grid-template-columns: 1.05fr 1fr; min-height: 520px; scroll-margin-top: 84px; }
+  .app .copy { padding: 52px 48px; display: flex; flex-direction: column; justify-content: center; }
+  .app .shot { position: relative; display: flex; align-items: center; justify-content: center; padding: 40px 32px; overflow: hidden; }
+  .app .platform { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 14px; }
+  .app h2 { font-family: var(--serif); font-style: italic; font-weight: 600; font-size: clamp(34px, 4vw, 48px); line-height: 1.05; margin: 0 0 8px; }
+  .app .sub { font-size: 18px; font-weight: 600; margin: 0 0 20px; max-width: 34ch; }
+  .app ul { list-style: none; padding: 0; margin: 0 0 28px; }
+  .app li { position: relative; padding-left: 24px; margin-bottom: 9px; font-size: 15.5px; }
+  .app li::before { content: ""; position: absolute; left: 2px; top: .5em; width: 8px; height: 8px; border-radius: 50%; background: var(--acc); box-shadow: 0 0 0 3px color-mix(in srgb, var(--acc) 25%, transparent); }
+  .cta-row { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 18px; }
+  .btn { display: inline-flex; align-items: center; gap: 10px; padding: 13px 22px; border-radius: 999px; font-weight: 700; font-size: 15px; text-decoration: none; background: var(--acc); transition: filter .15s, transform .15s; }
+  .btn:hover { filter: brightness(1.08); transform: translateY(-1px); }
+  .legal { font-size: 13.5px; }
+  .legal a { color: var(--acc); text-decoration: none; margin-right: 14px; font-weight: 600; }
+  .legal a:hover { text-decoration: underline; }
+  .platform { color: var(--acc); }
+
+  /* Ownitory */
+  .own { --acc: var(--green); background: var(--card); border: 1px solid var(--line); }
+  .own .sub { color: var(--muted); }
+  .own .btn { color: #FFFDF7; }
+  .own .shot { background: radial-gradient(120% 90% at 70% 30%, #E4EEE6 0%, #EDE7DA 60%); min-height: 460px; }
+  .phone { width: 46%; max-width: 250px; border-radius: 34px; padding: 7px; background: #E2DACE; box-shadow: 0 30px 60px rgba(36,56,44,.22); }
+  .phone img { border-radius: 28px; }
+  .phone.back { transform: rotate(-6deg) translate(18%, 6%); }
+  .phone.front { transform: rotate(4deg) translate(-14%, -2%); }
+
+  /* DualDash */
+  .dd { --acc: var(--dd-acc); background: var(--dd-bg); color: var(--dd-ink); }
+  .dd .sub { color: var(--dd-muted); }
+  .dd .btn { color: #07131B; }
+  .dd .shot { background: radial-gradient(90% 80% at 50% 40%, #1E2A38 0%, var(--dd-bg) 70%); }
+  .dd .shot img { width: 62%; max-width: 300px; border-radius: 14px; box-shadow: 0 30px 70px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.06); }
+
+  /* INKEY RACK */
+  .ik { --acc: var(--ik-acc); background: var(--ik-bg); color: var(--ik-ink); grid-template-columns: 1fr; }
+  .ik .copy { padding-bottom: 12px; display: grid; grid-template-columns: 1fr 1fr; gap: 0 48px; align-items: end; }
+  .ik .sub { color: var(--ik-muted); }
+  .ik h2 { font-family: Impact, "Arial Narrow", "Roboto Condensed", sans-serif; font-style: normal; font-weight: 400; letter-spacing: .01em; color: var(--ik-acc); }
+  .ik .btn { color: #121214; }
+  .ik .shot { padding: 24px 48px 40px; flex-direction: column; }
+  .ik .shot img { width: 100%; border-radius: 12px; box-shadow: 0 30px 70px rgba(0,0,0,.6), 0 0 0 1px rgba(232,178,58,.18); }
+  .ik .note { font-size: 12px; color: var(--ik-muted); margin: 16px 0 0; align-self: flex-start; }
+
+  /* about + footer */
+  .about { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; padding: 72px 0; scroll-margin-top: 64px; }
+  .about h2 { font-family: var(--serif); font-style: italic; font-weight: 600; font-size: 34px; margin: 0 0 12px; line-height: 1.1; }
+  .about p { color: var(--muted); margin: 0 0 12px; }
+  .about p a { color: var(--green); font-weight: 600; }
+  .docs { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 8px 22px; align-self: start; }
+  .docs div { display: flex; justify-content: space-between; gap: 6px 12px; padding: 14px 0; flex-wrap: wrap; }
+  .docs div + div { border-top: 1px solid var(--line); }
+  .docs b { font-size: 15px; }
+  .docs a { color: var(--green); font-size: 14px; font-weight: 600; text-decoration: none; margin-left: 14px; }
+  .docs a:hover { text-decoration: underline; }
+  footer { border-top: 1px solid var(--line); padding: 28px 0 40px; font-size: 14px; color: var(--muted); }
+  footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+  footer a { color: var(--green); text-decoration: none; font-weight: 600; margin-left: 16px; }
+  footer a:first-child { margin-left: 0; }
+
+  @media (max-width: 860px) {
+    nav a:not(:last-child) { display: none; }
+    .hero { padding: 44px 0 36px; }
+    .tiles, .principles { grid-template-columns: 1fr; }
+    .principles { margin-bottom: 48px; }
+    .principles div, .principles div + div { padding: 16px 0; border-left: 0; }
+    .principles div + div { border-top: 1px solid var(--line); }
+    .app, .ik .copy, .about { grid-template-columns: 1fr; }
+    .app { border-radius: 22px; min-height: 0; margin-bottom: 20px; }
+    .app .copy { padding: 30px 22px 26px; }
+    .own .shot, .dd .shot { order: -1; padding: 32px 16px; }
+    .own .shot { min-height: 0; }
+    .ik .shot { padding: 4px 16px 26px; }
+    .about { gap: 28px; padding: 48px 0; }
+    .docs a { margin-left: 0; margin-right: 14px; }
+  }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .tile, .btn { transition: none; } }
 </style>
 </head>
 <body>
 
-<h1>Vol.42</h1>
-<p class="tag">Apps &amp; legal documentation</p>
+<header>
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Vol.42 home">
+      <svg width="30" height="30" viewBox="0 0 100 100" aria-hidden="true"><rect x="6" y="6" width="88" height="88" rx="18" fill="#3E6B52"/><circle cx="33" cy="51" r="12" fill="#FFFDF7"/><rect x="53" y="41" width="30" height="20" rx="6" fill="#FFFDF7"/></svg>
+      Vol.42
+    </a>
+    <nav>
+      <a href="#ownitory">Ownitory</a>
+      <a href="#dualdash">DualDash</a>
+      <a href="#inkeyrack">INKEY RACK</a>
+      <a href="#about">Privacy &amp; terms</a>
+    </nav>
+  </div>
+</header>
 
-<div class="app-card">
-  <div class="app-header">
-    <svg width="22" height="22" viewBox="0 0 100 100" fill="none" aria-hidden="true">
-      <path d="M50 12 L90 44 V86 A4 4 0 0 1 86 90 H14 A4 4 0 0 1 10 86 V44 Z" stroke="#3E6B52" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/>
-      <circle cx="50" cy="60" r="17" fill="#3E6B52"/>
-      <circle cx="50" cy="60" r="7" fill="#FFFDF7"/>
-    </svg>
-    <h2>Ownitory — Home Inventory</h2>
-  </div>
-  <div class="links">
-    <a href="ownitory/privacy.html">Privacy Policy</a>
-    <a href="ownitory/terms.html">Terms &amp; Conditions</a>
-  </div>
-</div>
+<main id="top" class="wrap">
 
-<div class="app-card">
-  <div class="app-header">
-    <svg width="22" height="22" viewBox="0 0 100 100" fill="none" aria-hidden="true">
-      <circle cx="50" cy="50" r="38" stroke="#2F5D8C" stroke-width="8"/>
-      <path d="M50 26 V50 L67 61" stroke="#2F5D8C" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
-    <h2>DualDash — World Clock &amp; System Monitor</h2>
-  </div>
-  <div class="links">
-    <a href="dualdash/privacy.html">Privacy Policy</a>
-    <a href="dualdash/terms.html">Terms &amp; Conditions</a>
-  </div>
-</div>
+  <section class="hero">
+    <p class="eyebrow">Apps for Android &amp; Windows</p>
+    <h1>Small apps that do <em>one job</em> properly.</h1>
+    <p class="lead">Vol.42 makes focused, carefully designed software. No accounts, no tracking, and your data stays on your own device.</p>
 
-<div class="app-card">
-  <div class="app-header">
-    <svg width="22" height="22" viewBox="0 0 100 100" fill="none" aria-hidden="true">
-      <circle cx="50" cy="50" r="42" fill="#1C1C22"/>
-      <circle cx="50" cy="50" r="34" stroke="#3A3A44" stroke-width="2"/>
-      <circle cx="50" cy="50" r="26" stroke="#3A3A44" stroke-width="2"/>
-      <circle cx="50" cy="50" r="15" fill="#E8B23A"/>
-      <circle cx="50" cy="50" r="3" fill="#0B0B0D"/>
-    </svg>
-    <h2>INKEY RACK — VST3 Rack for Pad Controllers</h2>
-  </div>
-  <div class="links">
-    <a href="inkeyrack/privacy.html">Privacy Policy</a>
-    <a href="inkeyrack/terms.html">Terms &amp; Conditions</a>
-  </div>
-</div>
+    <div class="tiles">
+      <a class="tile" href="#ownitory">
+        <svg width="46" height="46" viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" rx="22" fill="#3E6B52"/><path d="M50,22.6 L78.8,45.7 V75.9 A2.9,2.9 0 0 1 75.9,78.8 H24.1 A2.9,2.9 0 0 1 21.2,75.9 V45.7 Z" stroke="#FFFDF7" stroke-width="6.5" stroke-linejoin="round" fill="none"/><circle cx="50" cy="57.2" r="12.2" fill="#FFFDF7"/></svg>
+        <div><b>Ownitory</b><span>Home inventory · Android</span></div>
+      </a>
+      <a class="tile" href="#dualdash">
+        <svg width="46" height="46" viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" rx="22" fill="#11151C"/><circle cx="50" cy="50" r="27" stroke="#4FC3F7" stroke-width="7" fill="none"/><path d="M50 34 V50 L61 57" stroke="#4FC3F7" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+        <div><b>DualDash</b><span>World clock &amp; system monitor · Windows</span></div>
+      </a>
+      <a class="tile" href="#inkeyrack">
+        <svg width="46" height="46" viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" rx="22" fill="#121214"/><circle cx="50" cy="50" r="30" stroke="#3A3A44" stroke-width="2" fill="none"/><circle cx="50" cy="50" r="21" stroke="#3A3A44" stroke-width="2" fill="none"/><circle cx="50" cy="50" r="12" fill="#E8B23A"/><circle cx="50" cy="50" r="3" fill="#0B0B0D"/></svg>
+        <div><b>INKEY RACK</b><span>VST3 rack &amp; MPC Sample kits · Windows</span></div>
+      </a>
+    </div>
+  </section>
 
-<!-- Future apps: add a new .app-card block here, pointing at /appname/privacy.html and /appname/terms.html -->
+  <section class="principles" aria-label="How Vol.42 apps work">
+    <div><h3>No account</h3><p>Open the app and use it. There is nothing to sign up for.</p></div>
+    <div><h3>No tracking</h3><p>No analytics, advertising or tracking code inside any of our apps.</p></div>
+    <div><h3>Your device, your data</h3><p>What you create stays on your phone or PC unless you choose to export it.</p></div>
+  </section>
 
-<footer>support@vol42.dev · <a href="https://www.facebook.com/profile.php?id=61596684690156" style="color:#3E6B52;text-decoration:none">Facebook</a></footer>
+  <!-- Ownitory -->
+  <section class="app own" id="ownitory">
+    <div class="copy">
+      <div class="platform">Android · Google Play</div>
+      <h2>Ownitory</h2>
+      <p class="sub">Know what your home is worth, before you need to claim.</p>
+      <ul>
+        <li>Photograph each item and add its value and receipt</li>
+        <li>Room-by-room totals and a claim-ready PDF or CSV report</li>
+        <li>Works offline. No account, nothing uploaded</li>
+        <li>One-time unlock. No subscription, ever</li>
+      </ul>
+      <div class="cta-row">
+        <a class="btn" href="https://play.google.com/store/apps/details?id=com.ownwise.app" rel="noopener">Get it on Google Play</a>
+        <span class="legal"><a href="ownitory/privacy.html">Privacy</a><a href="ownitory/terms.html">Terms</a></span>
+      </div>
+    </div>
+    <div class="shot" aria-hidden="true">
+      <div class="phone back"><img src="assets/ownitory-room.webp" width="540" height="1048" alt=""></div>
+      <div class="phone front"><img src="assets/ownitory-home.webp" width="540" height="1048" alt=""></div>
+    </div>
+  </section>
+
+  <!-- DualDash -->
+  <section class="app dd" id="dualdash">
+    <div class="copy">
+      <div class="platform">Windows 10 &amp; 11 · Microsoft Store</div>
+      <h2>DualDash</h2>
+      <p class="sub">The time anywhere, and what your PC is doing right now, in one small widget.</p>
+      <ul>
+        <li>A big local clock plus every time zone you work with</li>
+        <li>Alarms set against any city, with timer and stopwatch</li>
+        <li>Live CPU, memory, GPU, network and disk, with history</li>
+        <li>Asks Windows for no permissions and collects nothing</li>
+      </ul>
+      <div class="cta-row">
+        <a class="btn" href="https://apps.microsoft.com/detail/9PBX0CWHCC2K" rel="noopener">Get it from Microsoft Store</a>
+        <span class="legal"><a href="dualdash/privacy.html">Privacy</a><a href="dualdash/terms.html">Terms</a></span>
+      </div>
+    </div>
+    <div class="shot" aria-hidden="true">
+      <img src="assets/dualdash-widget.webp" width="402" height="662" alt="" loading="lazy">
+    </div>
+  </section>
+
+  <!-- INKEY RACK -->
+  <section class="app ik" id="inkeyrack">
+    <div class="copy">
+      <div>
+        <div class="platform">Windows 10 &amp; 11 · Microsoft Store</div>
+        <h2>INKEY RACK</h2>
+        <p class="sub">Turn the VST3 instruments you already own into kits for the MPC Sample, and play them live, always in key.</p>
+      </div>
+      <div>
+        <ul>
+          <li>Export any instrument as a 16-pad MPC Sample kit, up to eight banks</li>
+          <li>Every pad plays in key: 15 scales, any root</li>
+          <li>Kit Builder for your own WAV one-shots</li>
+          <li>Low-latency WASAPI output. No internet, no account</li>
+        </ul>
+        <div class="cta-row">
+          <a class="btn" href="https://apps.microsoft.com/detail/9P7BD30L3HCL" rel="noopener">Get it from Microsoft Store</a>
+          <span class="legal"><a href="inkeyrack/privacy.html">Privacy</a><a href="inkeyrack/terms.html">Terms</a></span>
+        </div>
+      </div>
+    </div>
+    <div class="shot">
+      <img src="assets/inkeyrack-rack.webp" width="1200" height="675" alt="INKEY RACK main window with key and scale controls and a 16-pad grid" loading="lazy">
+      <p class="note">Akai Professional and MPC are trademarks of inMusic Brands, Inc. INKEY RACK is independent and not affiliated with or endorsed by them. VST is a registered trademark of Steinberg Media Technologies GmbH.</p>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div>
+      <h2>Privacy is the design, not a setting.</h2>
+      <p>Each Vol.42 app is built so that it doesn't need your data. That's why our privacy policies are short: there is very little to tell.</p>
+      <p>Questions, bug reports or ideas? Write to <a href="mailto:support@vol42.dev">support@vol42.dev</a>.</p>
+    </div>
+    <div class="docs">
+      <div><b>Ownitory</b><span><a href="ownitory/privacy.html">Privacy Policy</a><a href="ownitory/terms.html">Terms &amp; Conditions</a></span></div>
+      <div><b>DualDash</b><span><a href="dualdash/privacy.html">Privacy Policy</a><a href="dualdash/terms.html">Terms &amp; Conditions</a></span></div>
+      <div><b>INKEY RACK</b><span><a href="inkeyrack/privacy.html">Privacy Policy</a><a href="inkeyrack/terms.html">Terms &amp; Conditions</a></span></div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Vol.42</span>
+    <span><a href="mailto:support@vol42.dev">support@vol42.dev</a><a href="https://www.facebook.com/profile.php?id=61596684690156" rel="noopener">Facebook</a></span>
+  </div>
+</footer>
 
 </body>
 </html>
