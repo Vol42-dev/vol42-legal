@@ -32,7 +32,7 @@
   </svg>
   <h1>Ownitory — Privacy Policy</h1>
 </div>
-<p class="updated">Last updated: July 23, 2026</p>
+<p class="updated">Last updated: November 18, 2026</p>
 
 <p>This policy is intentionally short, because Ownitory's architecture makes it short: the app does not collect, transmit, store remotely, or share any of your data.</p>
 
@@ -42,28 +42,32 @@
   <li>Ownitory does not collect, transmit, or store any of your data on any server, because Ownitory has no server.</li>
   <li>All information you enter — items, photos, values, notes, receipts — is stored only in the app's private storage on your device.</li>
   <li>Ownitory does not use analytics, advertising, or tracking software of any kind.</li>
-  <li>Ownitory requests only the device permissions it needs to function (camera, photo/media access, and optional biometric authentication for the app-lock feature) — never location, contacts, or background network access.</li>
+  <li>Ownitory requests only the device permissions it needs to function (camera, and optional biometric authentication for the app-lock feature). Photos and files are chosen by you through Android's own picker. It never requests location, contacts, or microphone access.</li>
   <li>Any file you export (a PDF report, CSV, or backup file) is created entirely on your device and only leaves your device if and when you personally choose to share, save, or back it up, using Android's standard share sheet or file picker. Ownitory itself never transmits this data anywhere.</li>
   <li>If you back up to your own cloud storage via the Android file picker, that transfer happens directly between your device and the storage provider you chose (e.g., Google Drive, Dropbox) — Ownitory is not a party to that transfer and never has access to your account or its contents.</li>
 </ul>
 
 <h2>What Ownitory stores, and where</h2>
 <p>All data — item records, photos, receipts, settings — is stored locally in the app's private, sandboxed storage on your Android device. Uninstalling the app without first exporting a backup permanently deletes this data; Ownitory has no way to recover it, because no copy exists anywhere else.</p>
+<p>Ownitory also opts out of Android's automatic cloud backup, so your inventory is not copied to your Google account behind the scenes. The only backups that exist are the ones you export yourself.</p>
 
 <h2>Permissions Ownitory requests, and why</h2>
 <table>
   <tr><th>Permission</th><th>Why it's needed</th></tr>
   <tr><td>Camera</td><td>To photograph items and receipts directly within the app</td></tr>
-  <tr><td>Photos/media (scoped access)</td><td>To attach existing photos or documents to an item, and to save exported reports</td></tr>
   <tr><td>Biometric/fingerprint (optional)</td><td>Only if you enable the optional app-lock feature, to unlock the app locally on your device</td></tr>
+  <tr><td>Notifications</td><td>Reserved for on-device reminders, such as a reminder to back up. No push-notification service is used</td></tr>
+  <tr><td>Network access</td><td>Required by Google Play Billing to process the one-time purchase. Ownitory's own code never sends your inventory, photos or receipts over the network</td></tr>
 </table>
-<p>Ownitory does not request location, contacts, microphone, SMS, or background network permissions. By default, Ownitory also strips location (GPS) metadata from photos taken within the app, unless you disable that setting in Settings → Privacy &amp; security.</p>
+<p>To attach an existing photo or document, or to save an export or backup, Ownitory uses Android's system photo picker and file picker. You choose each file yourself, so Ownitory needs no broad access to your photos or storage.</p>
+<p>Ownitory does not request location, contacts, microphone, or SMS permissions. By default, Ownitory also strips location (GPS) metadata from photos taken within the app, unless you disable that setting in Settings → Privacy &amp; security.</p>
 
 <h2>In-app purchases</h2>
-<p>Ownitory offers a single one-time in-app purchase (to remove the free-trial item limit), processed entirely through Google Play Billing. Ownitory does not receive or store your payment information — that is handled directly by Google Play, subject to Google's own privacy policy.</p>
+<p>Ownitory offers a single one-time in-app purchase (to remove the free-trial item limit and unlock full report exports), processed entirely through Google Play Billing. Ownitory does not receive or store your payment information — that is handled directly by Google Play, subject to Google's own privacy policy.</p>
 
 <h2>Third-party services</h2>
 <p>Ownitory does not integrate with, or transmit data to, any third-party service, analytics provider, or advertising network.</p>
+<p>Vol.42 may advertise Ownitory on other platforms, such as Facebook and Instagram. If you see or tap one of those ads, that platform's own privacy policy applies to it. The Ownitory app contains no advertising, attribution or tracking SDK, and shares nothing with those platforms.</p>
 
 <h2>Children's privacy</h2>
 <p>Ownitory is not directed at children and does not knowingly collect data from anyone, of any age — consistent with the no-data-collection architecture described above.</p>
