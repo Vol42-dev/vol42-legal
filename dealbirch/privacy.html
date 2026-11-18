@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DealBirch CRM — Privacy Policy</title>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<style>
+  body { font-family: -apple-system, "Hanken Grotesk", system-ui, sans-serif; max-width: 720px; margin: 0 auto; padding: 40px 20px 80px; color: #2B2620; background: #F5F1E8; line-height: 1.6; }
+  .brand { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; }
+  h1 { font-family: Georgia, "Source Serif 4", serif; font-style: italic; font-size: 32px; margin: 0; }
+  .updated { color: #857B6E; font-size: 14px; margin-bottom: 32px; }
+  h2 { font-size: 18px; margin-top: 36px; border-bottom: 1px solid rgba(43,38,32,.12); padding-bottom: 6px; }
+  ul { padding-left: 20px; }
+  li { margin-bottom: 8px; }
+  table { border-collapse: collapse; width: 100%; margin: 16px 0; }
+  th, td { text-align: left; padding: 8px 12px; border: 1px solid rgba(43,38,32,.12); font-size: 15px; vertical-align: top; }
+  th { background: #EDE7DA; }
+  code { background: #EDE7DA; padding: 1px 5px; border-radius: 3px; font-size: 13px; }
+  a { color: #2F5D8C; }
+  .note { font-size: 13px; color: #857B6E; margin-top: 48px; border-top: 1px solid rgba(43,38,32,.12); padding-top: 16px; }
+  .back { display: inline-block; margin-bottom: 24px; font-size: 14px; color: #857B6E; text-decoration: none; }
+  .callout { background: #FFFDF7; border: 1px solid rgba(43,38,32,.12); border-radius: 8px; padding: 12px 16px; font-size: 15px; }
+</style>
+</head>
+<body>
+
+<a class="back" href="../index.html">&larr; Vol.42 apps</a>
+<div class="brand">
+  <svg width="30" height="30" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+    <path d="M50 88 V14" stroke="#3E6B52" stroke-width="8" stroke-linecap="round"/>
+    <path d="M50 46 L30 30 M50 62 L72 44 M50 32 L66 20" stroke="#3E6B52" stroke-width="7" stroke-linecap="round"/>
+    <path d="M44 72 H50 M50 56 H57" stroke="#F5F1E8" stroke-width="4" stroke-linecap="round"/>
+  </svg>
+  <h1>DealBirch CRM — Privacy Policy</h1>
+</div>
+<p class="updated">Last updated: October 4, 2026</p>
+
+<p class="callout">DealBirch CRM is in pre-release development. This policy describes how the app is built to handle data, and will be reviewed and updated before the first public release.</p>
+
+<p>DealBirch CRM ("DealBirch", "the app") is a customer relationship manager for Windows, with a companion app for Android, developed by Vol.42. It is built so that your customer data stays with you: Vol.42 runs no server for it, never receives it, and cannot read it.</p>
+
+<h2>Summary</h2>
+<ul>
+  <li>DealBirch keeps your CRM data in an encrypted database on your own device.</li>
+  <li>If you choose to sync between devices or with colleagues, DealBirch stores <strong>encrypted</strong> files in <strong>your own</strong> OneDrive, SharePoint or Google Drive. The encryption keys stay on your devices; neither Vol.42 nor the storage provider can read the contents.</li>
+  <li>Vol.42 has no DealBirch server, no DealBirch account and no copy of your data.</li>
+  <li>There is no analytics, advertising or tracking in the app, and no telemetry by default.</li>
+  <li>Purchases are handled by the Microsoft Store or Google Play; Vol.42 never sees your payment details.</li>
+</ul>
+
+<h2>What DealBirch stores on your device</h2>
+<table>
+  <tr><th>Data</th><th>Where and how</th></tr>
+  <tr><td>Your CRM records (contacts, companies, deals, notes, history)</td><td>An encrypted local database. Its key is protected by Windows for your user account (Windows Data Protection), or by Android Keystore on Android.</td></tr>
+  <tr><td>Automatic backups</td><td>One encrypted copy of the database per day, kept for 14 days, next to the database.</td></tr>
+  <tr><td>Sign-in tokens for OneDrive or Google Drive</td><td>Encrypted for your Windows user account. Used only to reach your own storage.</td></tr>
+  <tr><td>Crash log</td><td>If the app fails unexpectedly, error types and technical stack traces (no CRM content) are written to a local log file. It never leaves your device unless you choose to send it to us.</td></tr>
+</table>
+<p>The app shows where these files are kept. Uninstalling the app can remove them, so export your data or sync it to your cloud storage before you uninstall.</p>
+
+<h2>Syncing through your own cloud storage</h2>
+<p>Syncing is optional. When you turn it on, DealBirch writes encrypted change files to a folder you choose in your OneDrive, a SharePoint library, or your Google Drive, and your other devices read them from there. Every file is encrypted on your device before upload (AES-256-GCM); the keys are exchanged only between your approved devices. Microsoft or Google store those encrypted files under their own terms, as part of your account.</p>
+<p>DealBirch's privacy tools (export, retention reviews, erasure) also act on these files. Your storage provider may keep deleted files in its recycle bin or version history for a period; the app tells you when that applies.</p>
+
+<h2>Microsoft sign-in (OneDrive and SharePoint)</h2>
+<p>If you connect a Microsoft account, DealBirch asks Microsoft for these permissions, and uses them only as described:</p>
+<table>
+  <tr><th>Permission</th><th>Why DealBirch asks for it</th></tr>
+  <tr><td>Sign you in and read your profile</td><td>To show which account is connected (your name and email address).</td></tr>
+  <tr><td>Read and write your files</td><td>To create and read the encrypted DealBirch workspace folder in your own OneDrive.</td></tr>
+  <tr><td>Read and write all files you can access</td><td>Requested <strong>only</strong> if you join a workspace folder that a colleague shared with you, or one in a SharePoint library. DealBirch only works inside that workspace folder.</td></tr>
+  <tr><td>Maintain access to data you have given it access to</td><td>So syncing keeps working in the background without asking you to sign in every hour.</td></tr>
+</table>
+<p>DealBirch does not read your email or calendar. If a future version offers mail or calendar features, it will ask for those permissions separately, only when you turn the feature on, and this policy will be updated first. You can withdraw DealBirch's access at any time in your Microsoft account (<a href="https://account.live.com/consent/Manage">personal accounts</a>) or through your organisation's administrator.</p>
+
+<h2>Google sign-in (Google Drive)</h2>
+<p>If you connect a Google account, DealBirch asks only for the Google Drive permission <code>drive.file</code>: access to the specific files that DealBirch creates or that you open with it. It cannot see the rest of your Drive. DealBirch uses this access only to store and read its own encrypted workspace files, and does not use Google user data for advertising, does not sell it, and does not transfer it to anyone.</p>
+<p>DealBirch CRM's use and transfer of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including the Limited Use requirements.</p>
+<p>You can withdraw access at any time in your <a href="https://myaccount.google.com/permissions">Google account settings</a>.</p>
+
+<h2>AI assistant connections (Windows, optional)</h2>
+<p>DealBirch for Windows can let an AI assistant that you already use on your PC, such as Claude Desktop or ChatGPT, work with your CRM data through a local connection. This is <strong>off by default</strong>. When you turn it on, you choose whether the assistant may only read or may also make changes, and the assistant acts with your own permissions. Information the assistant reads is sent to that assistant's provider under your agreement with them; Vol.42 does not receive it. Changes made by an assistant are marked as such in the record history.</p>
+
+<h2>Your customers' personal data</h2>
+<p>The contacts and other people you record in DealBirch are your business's data. Your business decides why and how long it keeps them and is responsible for doing so lawfully (under the GDPR, your business is the controller). Because Vol.42 never receives or can read that data, Vol.42 does not process it on your behalf. DealBirch gives you tools to meet your obligations: consent and lawful-basis fields, export of a person's data, retention schedules with review reminders, and permanent erasure that also reaches your other devices and backups.</p>
+
+<h2>Purchases</h2>
+<p>DealBirch is a free download with optional one-time purchases made through the Microsoft Store or Google Play. The store processes the payment and tells the app whether you own a licence; Vol.42 receives store sales reports but not your payment details. Licence checks happen between the app and the store.</p>
+
+<h2>Diagnostics we receive</h2>
+<p>None by default. If you choose to send us a crash report or contact support, we receive what you send, and use it only to fix the problem. Crash reports are designed to exclude CRM content. Microsoft and Google also give app publishers aggregated, anonymised reliability statistics about their apps.</p>
+
+<h2>Children's privacy</h2>
+<p>DealBirch is a business tool and is not directed at children.</p>
+
+<h2>Changes to this policy</h2>
+<p>If a change affects how data is handled, this page will be updated before the change ships, and the date above revised.</p>
+
+<h2>Contact</h2>
+<p><a href="mailto:support@vol42.dev">support@vol42.dev</a> — for privacy questions or requests.</p>
+
+<p class="note">Developed by Vol.42 · See also: <a href="terms.html">Terms &amp; Conditions</a></p>
+
+</body>
+</html>
